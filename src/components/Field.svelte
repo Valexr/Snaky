@@ -35,8 +35,8 @@
                 const axis = snake.direction.$.x === 0 ? "x" : "y";
                 const back =
                     Number(e.target.dataset[axis]) < snake.head.$[axis];
-                const vert = back ? "up" : "down";
-                const horz = back ? "left" : "right";
+                const vert = back ? "Up" : "Down";
+                const horz = back ? "Left" : "Right";
                 const direction = axis === "x" ? horz : vert;
 
                 snake.direction.set(direction);
