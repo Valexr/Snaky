@@ -11,4 +11,9 @@ body {
     background-color: var(--primary);
     font-family: "Courier New", Courier, monospace;
     font-weight: 600;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
 }

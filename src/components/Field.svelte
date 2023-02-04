@@ -15,8 +15,8 @@
         const RO = new ResizeObserver(([{ contentRect }]) => {
             const { width, height } = contentRect;
             fieldSize.set({
-                width: Math.trunc(width / 18.4),
-                height: Math.trunc(height / 18.4),
+                width: Math.round(width / 18.5),
+                height: Math.round(height / 18.5),
             });
         });
 
@@ -79,7 +79,7 @@
         grid-template-columns: repeat(var(--cols), 1rem);
         grid-auto-rows: minmax(1rem, auto);
         gap: 0.15rem;
-        height: calc(100vh - 4rem);
-        padding: 0 1rem;
+        inset: 3rem 1rem 1rem;
+        position: absolute;
     }
 </style>

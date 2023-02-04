@@ -13,7 +13,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 1rem;
+        padding: 0.5rem 1rem;
     }
     #scoreboard > * {
         margin: 0;
