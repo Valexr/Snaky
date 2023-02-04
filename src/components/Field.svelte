@@ -30,11 +30,10 @@
         };
         const clickHandler = (e: ClickEvent) => {
             if (!$isPlaying) return;
-
-            if (Object.keys(e.target.dataset).length) {
+            const { dataset } = e.target;
+            if (Object.keys(dataset).length) {
                 const axis = snake.direction.$.x === 0 ? "x" : "y";
-                const back =
-                    Number(e.target.dataset[axis]) < snake.head.$[axis];
+                const back = Number(dataset[axis]) < snake.head.$[axis];
                 const vert = back ? "Up" : "Down";
                 const horz = back ? "Left" : "Right";
                 const direction = axis === "x" ? horz : vert;
