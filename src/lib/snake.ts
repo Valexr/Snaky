@@ -3,10 +3,10 @@ import { score, speed } from '$lib/game';
 import type { Coords, Snake } from '$types';
 
 const directions: { [key: string]: Coords } = {
-    up: { x: 0, y: -1 },
-    down: { x: 0, y: 1 },
-    left: { x: -1, y: 0 },
-    right: { x: 1, y: 0 },
+    Up: { x: 0, y: -1 },
+    Down: { x: 0, y: 1 },
+    Left: { x: -1, y: 0 },
+    Right: { x: 1, y: 0 },
 };
 
 /** Array of the pixels in the snake's body */
@@ -31,7 +31,7 @@ snake.head.move = () => {
 snake.init = () => {
     score.$ = 0;
     snake.head.$ = snake.$[0];
-    snake.direction.$ = directions.right;
+    snake.direction.$ = directions.Right;
     snake.head.move();
 };
 

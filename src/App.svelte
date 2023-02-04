@@ -10,7 +10,7 @@
         speed.$ = e.target.value;
     }
     function snakeLength(e: any) {
-        snake.$.unshift({ x: -1 + e.target.value, y: 0 });
+        snake.$.unshift({ x: e.target.value - 1, y: 0 });
     }
 </script>
 
@@ -29,6 +29,7 @@
                         on:input={snakeSpeed}
                         min="1"
                         max="10"
+                        maxlength="2"
                         size="2"
                     />
                 </label>
@@ -40,6 +41,7 @@
                         on:input={snakeLength}
                         min="1"
                         max="10"
+                        maxlength="2"
                         size="2"
                     />
                 </label>

@@ -23,8 +23,10 @@
         field.isConnected && RO.observe(field);
 
         const keyboardHandler = (e: KeyboardEvent) => {
-            const direction = e.key.replace("Arrow", "").toLowerCase();
-            snake.direction.set(direction);
+            if (e.key.includes("Arrow")) {
+                const direction = e.key.replace("Arrow", "");
+                snake.direction.set(direction);
+            }
         };
         const clickHandler = (e: ClickEvent) => {
             if (!$isPlaying) return;
