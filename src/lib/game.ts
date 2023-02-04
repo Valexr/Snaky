@@ -1,6 +1,7 @@
 import { store, type UnsubscribeFn } from 'storxy';
 import { snake } from './snake';
 import { apple } from './apple';
+import { clamp } from './utils';
 import type { FieldSize, Size, Speed } from '$types';
 
 /** Size of the game field in pixels */
@@ -57,7 +58,7 @@ export function start() {
             snake.makeLonger.$ = true;
             score.$ += 10 * speed.$;
             if (!(snake.$.length % 5)) {
-                speed.$++;
+                clamp(1, speed.$++, 10)
             }
         }
 
@@ -66,15 +67,13 @@ export function start() {
     tick();
 }
 
-const clamp = (min: number, num: number, max: number) => Math.min(Math.max(num, min), max);
-
 function tick() {
     setTimeout(() => {
         if (isPlaying.$) {
             snake.head.move();
             tick();
         }
-    }, 500 - (50 * (clamp(1, speed.$ - 1, 9))));
+    }, 500 / speed.$);
 }
 
 export function stop() {
