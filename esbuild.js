@@ -30,6 +30,7 @@ const buildOptions = {
     sourcemap: DEV,
     entryPoints: ['src/app.ts'],
     outdir: 'public/build',
+    format: 'esm',
     plugins: [svelte(svelteOptions), log],
     inject: DEV ? ['./env/lr.js'] : [],
     legalComments: "none",
