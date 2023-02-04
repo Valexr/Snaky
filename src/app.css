@@ -1,0 +1,14 @@
+:root {
+    --primary: #a8c64e;
+    --secondary: #81a1119c;
+    --dark: #3c412c;
+    --shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 4px 4px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+body {
+    color: var(--dark);
+    background-color: var(--primary);
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+}

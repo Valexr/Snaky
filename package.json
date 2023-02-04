@@ -1,0 +1,23 @@
+{
+    "name": "snaky",
+    "description": "Snake game",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "node esbuild",
+        "dev": "node esbuild --dev",
+        "start": "sirv public --no-clear"
+    },
+    "devDependencies": {
+        "@tsconfig/svelte": "^3.0.0",
+        "esbuild": "^0.17.5",
+        "esbuild-svelte": "^0.7.3",
+        "storxy": "^0.2.3",
+        "svelte": "^3.55.1",
+        "svelte-preprocess": "^5.0.1",
+        "svelte2tsx": "^0.6.1",
+        "tslib": "^2.5.0",
+        "typescript": "^4.9.5"
+    }
+}
