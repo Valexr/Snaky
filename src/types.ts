@@ -1,5 +1,9 @@
 import type { StorxyStore } from "storxy"
 
+export interface Speed extends StorxyStore<number> {
+    set: (size: number) => void
+}
+
 export type Size = {
     width: number,
     height: number,

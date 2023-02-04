@@ -81,5 +81,8 @@
         gap: 0.15rem;
         inset: 3rem 1rem 1rem;
         position: absolute;
+        user-select: none;
+        pointer-events: auto;
+        --webkit-user-select: none;
     }
 </style>
