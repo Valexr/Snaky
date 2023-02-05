@@ -1,54 +1,58 @@
-import { store } from 'storxy';
-import { score, speed } from '$lib/game';
-import type { Coords, Snake } from '$types';
+import { get, writable } from 'svelte/store';
+import { score } from '$lib/game';
+import { equal } from './utils';
+import type { Coords } from '$types';
 
-const directions: { [key: string]: Coords } = {
-    Up: { x: 0, y: -1 },
-    Down: { x: 0, y: 1 },
-    Left: { x: -1, y: 0 },
-    Right: { x: 1, y: 0 },
-};
+function createSnake() {
+    const { subscribe, set, update } = writable<Coords[]>([{ x: 0, y: 0 }])
 
-/** Array of the pixels in the snake's body */
-export const snake = store<Coords[]>([]) as Snake;
-snake.$ = [{ x: 0, y: 0 }]
-
-/** Snake direction arguments [x,y] */
-snake.direction = store<Coords>() as Snake["direction"];
-snake.direction.set = (dir: string) => {
-    snake.direction.$ = directions[dir];
-};
-
-/** Snake's head coords */
-snake.head = store<Coords>() as Snake["head"];
-snake.head.move = () => {
-    snake.head.$ = {
-        x: snake.head.$.x + snake.direction.$.x,
-        y: snake.head.$.y + snake.direction.$.y,
+    const directions: { [key: string]: Coords } = {
+        Up: { x: 0, y: -1 },
+        Down: { x: 0, y: 1 },
+        Left: { x: -1, y: 0 },
+        Right: { x: 1, y: 0 },
     };
-};
 
-snake.init = () => {
-    score.$ = 0;
-    snake.head.$ = snake.$[0];
-    snake.direction.$ = directions.Right;
-    snake.head.move();
-};
+    let head: Coords = { x: 0, y: 0 }
+    let direction: Coords = { x: 1, y: 0 }
+    let makeLonger: boolean = false
 
-/** Set if snake should grove on next move */
-snake.makeLonger = store(false);
-snake.moveBody = () => {
-    const body = [...snake.$];
-    body.unshift(snake.head.$);
-    if (!snake.makeLonger.$) {
-        body.pop();
-    } else {
-        snake.makeLonger.$ = false;
+    return {
+        set,
+        subscribe,
+        update,
+        head, direction, makeLonger,
+        init() {
+            score.set(0);
+            this.head = get(this)[0];
+            this.direction = directions.Right;
+        },
+        moveHead() {
+            this.head = {
+                x: this.head.x + this.direction.x,
+                y: this.head.y + this.direction.y,
+            };
+        },
+        moveBody() {
+            this.unshift(this.head);
+            if (this.makeLonger) {
+                this.makeLonger = false;
+            } else {
+                this.pop();
+            }
+        },
+        isPixelInBody(pixel: Coords) {
+            return get(this).some((field) => equal(field, pixel));
+        },
+        setDirection(dir: string) {
+            this.direction = directions[dir];
+        },
+        unshift(pixel: Coords) {
+            set([pixel, ...get(this)])
+        },
+        pop() {
+            set(get(this).slice(0, -1))
+        }
     }
-    snake.$ = body;
-};
-
-/** Check if specified coords is in the snake's body array */
-snake.isPixelInBody = (x, y) => {
-    return snake.$.some((bodyPixel) => bodyPixel?.x === x && bodyPixel?.y === y);
-};
+}
+export const snake = createSnake();

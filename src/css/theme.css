@@ -1,7 +1,7 @@
 :root {
     --primary: hwb(75 31% 22%);
     --secondary: hwb(75 7% 36% / 0.612);
-    --dark: hsl(75, 19%, 21%);
-    --shadow: 2px 2px 1px 0px hsla(75, 19%, 21%, 0.25);
-    --shadow-lg: 4px 4px 1px 0px hsla(75, 19%, 21%, 0.25);
+    --dark: hwb(75 17% 75%);
+    --shadow: 2px 2px 1px 0px hwb(75 17% 75% / 0.25);
+    --shadow-lg: 4px 4px 1px 0px hwb(75 17% 75% / 0.25);
 }

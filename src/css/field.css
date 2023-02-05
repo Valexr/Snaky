@@ -1,8 +1,8 @@
 #field {
     display: grid;
-    grid-template-columns: repeat(var(--cols), 1rem);
-    grid-auto-rows: minmax(1rem, auto);
-    gap: 0.15rem;
+    grid-template-columns: repeat(var(--cols), var(--cell));
+    grid-auto-rows: minmax(var(--cell), auto);
+    gap: var(--gap);
     inset: 3rem 1rem 1rem;
     width: calc(100% / var(--part) - 2rem);
     height: calc(100% / var(--part) - 4rem);

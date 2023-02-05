@@ -1,84 +1,64 @@
-import { store, type UnsubscribeFn } from 'storxy';
+import { get, writable } from 'svelte/store';
 import { snake } from './snake';
 import { apple } from './apple';
 import { clamp } from './utils';
-import type { FieldSize, Size, Speed } from '$types';
+import type { Size } from '$types';
 
-/** Size of the game field in pixels */
-export const fieldSize = store<Size>({
+export const field = writable<Size>({
     width: 20,
     height: 20,
-    part: 1
-}) as FieldSize;
+    part: 1.5,
+    gap: 1.5,
+    cell: 16
+});
 
-fieldSize.set = (size: Size) => fieldSize.$ = size
-
-/** Current state of the game */
-export const isPlaying = store<boolean>(false);
-
-/** Score */
-export const score = store<number>(0);
-
-/** Speed */
-export const speed = store<number>(1) as Speed;
-speed.set = (value: number) => speed.$ = value
-
-let unsubscribe: UnsubscribeFn;
+export const isPlaying = writable<boolean>(false);
+export const score = writable<number>(0);
+export const speed = writable<number>(1);
 
 export function start() {
-    isPlaying.$ = true;
+    isPlaying.set(true);
     snake.init();
     apple.generate();
-
-    unsubscribe = snake.head.$$((head) => {
-        if (snake.isPixelInBody(head.x, head.y)) return stop();
-
-        if (head.y < 0) {
-            snake.head.$ = {
-                x: snake.head.$.x + snake.direction.$.x,
-                y: fieldSize.$.height + snake.direction.$.y,
-            };
-        } else if (head.y >= fieldSize.$.height) {
-            snake.head.$ = {
-                x: snake.head.$.x + snake.direction.$.x,
-                y: -1 + snake.direction.$.y,
-            };
-        } else if (head.x < 0) {
-            snake.head.$ = {
-                x: fieldSize.$.width + snake.direction.$.x,
-                y: snake.head.$.y + snake.direction.$.y,
-            };
-        } else if (head.x >= fieldSize.$.width) {
-            snake.head.$ = {
-                x: -1 + snake.direction.$.x,
-                y: snake.head.$.y + snake.direction.$.y,
-            };
-        }
-        if (head.x === apple.$.x && head.y === apple.$.y) {
-            apple.generate();
-            snake.makeLonger.$ = true;
-            score.$ += 10 * speed.$;
-            if (!(snake.$.length % 5)) {
-                clamp(1, speed.$++, 10)
-            }
-        }
-
-        snake.moveBody();
-    });
     tick();
+}
+
+function move() {
+    snake.moveHead();
+
+    if (snake.isPixelInBody(snake.head)) return stop();
+
+    if (snake.head.y < 0) {
+        snake.head.y = get(field).height + snake.direction.y
+    } else if (snake.head.y >= get(field).height) {
+        snake.head.y = snake.direction.y - 1
+    } else if (snake.head.x < 0) {
+        snake.head.x = get(field).width + snake.direction.x
+    } else if (snake.head.x >= get(field).width) {
+        snake.head.x = snake.direction.x - 1
+    }
+
+    if (apple.isPixelAnApple(snake.head)) {
+        apple.generate();
+        snake.makeLonger = true;
+        score.update(score => score += 10 * get(speed));
+        if (!(get(snake).length % 5)) {
+            speed.update(speed => clamp(1, speed + 1, 10))
+        }
+    }
+    snake.moveBody();
 }
 
 function tick() {
     setTimeout(() => {
-        if (isPlaying.$) {
-            snake.head.move();
+        if (get(isPlaying)) {
+            move();
             tick();
         }
-    }, 500 / speed.$);
+    }, 500 - (50 * (get(speed) - 1)));
 }
 
 export function stop() {
-    isPlaying.$ = false;
-    snake.$ = [{ x: -1, y: 0 }]
-    unsubscribe();
+    isPlaying.set(false);
+    snake.set([{ x: 0, y: 0 }])
 }

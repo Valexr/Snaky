@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { start, isPlaying, speed, fieldSize } from "$lib/game";
+    import { start, speed, field } from "$lib/game";
     import { snake } from "$lib/snake";
 </script>
 
@@ -11,10 +11,11 @@
     ];
 
     function snakeLength(e: any) {
-        if ($snake.length < e.target.value)
-            snake.$.unshift({ x: e.target.value - 1, y: 0 });
-        else snake.$.pop();
-        console.log(JSON.stringify(snake.$.length));
+        if ($snake.length < e.target.value) {
+            snake.unshift({ x: e.target.value - 1, y: 0 });
+        } else {
+            snake.pop();
+        }
     }
 </script>
 
@@ -45,8 +46,19 @@
             />
         </label>
         <label>
+            Cell
+            <input
+                type="number"
+                bind:value={$field.cell}
+                min="5"
+                max="100"
+                maxlength="2"
+                size="3"
+            />
+        </label>
+        <label>
             Field
-            <select bind:value={fieldSize.$.part}>
+            <select bind:value={$field.part}>
                 {#each sizes as [size, value]}
                     <option {value}>{size}</option>
                 {/each}

@@ -1,28 +1,26 @@
-import { store } from 'storxy';
-import { fieldSize } from './game';
+import { get, writable } from 'svelte/store';
+import { field } from './game';
 import { snake } from './snake';
-import type { Apple, Coords } from '$types';
+import { random } from './utils';
+import type { Coords } from '$types';
 
-/** An apple coords */
-export const apple = store<Coords>() as Apple;
+function createApple() {
+    const { subscribe, set } = writable<Coords>({ x: 0, y: 0 })
 
-/** Generate new apple and chek that it is not in snake's body */
-apple.generate = () => {
-    let pixel;
-    do {
-        pixel = generateRandomPixel(fieldSize.$.width - 1, fieldSize.$.height - 1);
-    } while (snake.isPixelInBody(pixel.x, pixel.y))
-    apple.$ = pixel;
-}
-
-/** Check that specified coords is match apple position */
-apple.isPixelAnApple = (x, y) => {
-    return x === apple.$?.x && y === apple.$?.y
-}
-
-function generateRandomPixel(width: number, height: number) {
     return {
-        x: Math.round(Math.random() * width),
-        y: Math.round(Math.random() * height),
+        subscribe,
+        generate() {
+            let pixel: Coords;
+            do {
+                pixel = random(get(field));
+            } while (snake.isPixelInBody(pixel))
+            set(pixel);
+        },
+        isPixelAnApple(pixel: Coords) {
+            return pixel.x === get(this).x && pixel.y === get(this).y
+        }
     }
-}
+};
+
+export const apple = createApple()
+
