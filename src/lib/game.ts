@@ -30,7 +30,7 @@ export const speed = writable<number>(1);
 export function start() {
     isPlaying.set(true);
     snake.init();
-    apple.generate();
+    apple.make();
     tick();
 }
 
@@ -66,7 +66,7 @@ function move() {
     snake.moveBody();
 
     if (apple.include(snake.head)) {
-        apple.generate();
+        apple.make();
         snake.makeLonger = true;
         score.update(score => score += 10 * get(speed));
         if (!(get(snake).length % 5)) {

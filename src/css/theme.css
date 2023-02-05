@@ -1,7 +1,18 @@
 :root {
-    --primary: hwb(75 31% 22%);
-    --secondary: hwb(75 7% 36% / 0.612);
-    --dark: hwb(75 17% 75%);
-    --shadow: 2px 2px 1px 0px hwb(75 17% 75% / 0.25);
-    --shadow-lg: 4px 4px 1px 0px hwb(75 17% 75% / 0.25);
+    --primary: hwb(75 35% 20%);
+    --secondary: hwb(75 5% 35% / 0.5);
+    --dark: hwb(75 15% 75%);
+    --shadow: 2px 2px 1px 0px hwb(75 15% 75% / 0.5);
+    --shadow-lg: 4px 4px 1px 0px hwb(75 15% 75% / 0.5);
 }
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --dark: hwb(75 35% 20%);
+        --secondary: hwb(75 5% 35% / 0.5);
+        --primary: hwb(75 15% 75%);
+        --shadow: 2px 2px 1px 0px hwb(75 15% 75% / 0.25);
+        --shadow-lg: 4px 4px 1px 0px hwb(75 15% 75% / 0.25);
+    }
+} */
