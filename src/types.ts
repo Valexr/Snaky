@@ -7,6 +7,7 @@ export interface Speed extends StorxyStore<number> {
 export type Size = {
     width: number,
     height: number,
+    part: number
 }
 export interface FieldSize extends StorxyStore<Size> {
     set: (size: Size) => void

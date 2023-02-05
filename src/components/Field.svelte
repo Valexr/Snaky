@@ -17,6 +17,7 @@
             fieldSize.set({
                 width: Math.round(width / 18.5),
                 height: Math.round(height / 18.5),
+                part: fieldSize.$.part,
             });
         });
 
@@ -66,24 +67,14 @@
     $: filledPixels = [...filledBySnake, ...filledByApple];
 </script>
 
-<section id="field" use:controls style="--cols: {$fieldSize.width}">
+<section
+    id="field"
+    use:controls
+    style="--cols: {$fieldSize.width}; --part: {$fieldSize.part}"
+>
     {#each { length: $fieldSize.height } as _, row}
         {#each { length: $fieldSize.width } as _, col}
             <Pixel x={col} y={row} filled={filledPixels} />
         {/each}
     {/each}
 </section>
-
-<style>
-    #field {
-        display: grid;
-        grid-template-columns: repeat(var(--cols), 1rem);
-        grid-auto-rows: minmax(1rem, auto);
-        gap: 0.15rem;
-        inset: 3rem 1rem 1rem;
-        position: absolute;
-        user-select: none;
-        pointer-events: auto;
-        --webkit-user-select: none;
-    }
-</style>

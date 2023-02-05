@@ -8,6 +8,7 @@ import type { FieldSize, Size, Speed } from '$types';
 export const fieldSize = store<Size>({
     width: 20,
     height: 20,
+    part: 1
 }) as FieldSize;
 
 fieldSize.set = (size: Size) => fieldSize.$ = size

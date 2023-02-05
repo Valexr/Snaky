@@ -11,7 +11,7 @@ const directions: { [key: string]: Coords } = {
 
 /** Array of the pixels in the snake's body */
 export const snake = store<Coords[]>([]) as Snake;
-snake.$ = [{ x: -1, y: 0 }]
+snake.$ = [{ x: 0, y: 0 }]
 
 /** Snake direction arguments [x,y] */
 snake.direction = store<Coords>() as Snake["direction"];

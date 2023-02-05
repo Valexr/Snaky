@@ -1,0 +1,12 @@
+.pixel {
+    background-color: var(--secondary);
+}
+
+.pixel:active {
+    box-shadow: var(--shadow);
+}
+
+.fill {
+    background-color: var(--dark);
+    box-shadow: var(--shadow);
+}

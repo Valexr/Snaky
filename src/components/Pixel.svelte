@@ -13,16 +13,3 @@
 </script>
 
 <span data-x={x} data-y={y} class="pixel" class:fill />
-
-<style>
-    .pixel {
-        background-color: var(--secondary);
-    }
-    .pixel:active {
-        box-shadow: var(--shadow);
-    }
-    .fill {
-        background-color: var(--dark);
-        box-shadow: var(--shadow);
-    }
-</style>
