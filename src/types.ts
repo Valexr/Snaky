@@ -1,4 +1,4 @@
-export type Size = {
+export type Field = {
     width: number,
     height: number,
     cell: number
@@ -6,7 +6,7 @@ export type Size = {
     part: number,
 }
 
-export type Coords = {
+export type Cell = {
     x: number,
     y: number,
 }

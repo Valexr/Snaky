@@ -1,20 +1,20 @@
 import { get, writable } from 'svelte/store';
 import { score } from '$lib/game';
 import { equal } from './utils';
-import type { Coords } from '$types';
+import type { Cell } from '$types';
 
 function createSnake() {
-    const { subscribe, set, update } = writable<Coords[]>([{ x: 0, y: 0 }])
+    const { subscribe, set, update } = writable<Cell[]>([{ x: 0, y: 0 }])
 
-    const directions: { [key: string]: Coords } = {
+    const directions: { [key: string]: Cell } = {
         Up: { x: 0, y: -1 },
         Down: { x: 0, y: 1 },
         Left: { x: -1, y: 0 },
         Right: { x: 1, y: 0 },
     };
 
-    let head: Coords = { x: 0, y: 0 }
-    let direction: Coords = { x: 1, y: 0 }
+    let head: Cell = { x: 0, y: 0 }
+    let direction: Cell = { x: 1, y: 0 }
     let makeLonger: boolean = false
 
     return {
@@ -41,13 +41,13 @@ function createSnake() {
                 this.pop();
             }
         },
-        isPixelInBody(pixel: Coords) {
+        include(pixel: Cell) {
             return get(this).some((field) => equal(field, pixel));
         },
         setDirection(dir: string) {
             this.direction = directions[dir];
         },
-        unshift(pixel: Coords) {
+        unshift(pixel: Cell) {
             set([pixel, ...get(this)])
         },
         pop() {

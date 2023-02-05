@@ -1,11 +1,11 @@
 <script lang="ts" context="module">
     import { equal } from "$lib/utils";
-    import type { Coords } from "$types";
+    import type { Cell } from "$types";
 </script>
 
 <script lang="ts">
-    export let pixel: Coords;
-    export let filled: Coords[] = [];
+    export let pixel: Cell;
+    export let filled: Cell[];
 </script>
 
 <span

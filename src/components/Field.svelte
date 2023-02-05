@@ -13,9 +13,10 @@
     function controls(area: HTMLElement) {
         const RO = new ResizeObserver(([{ contentRect }]) => {
             const { width, height } = contentRect;
+            const cell = $field.cell + $field.gap;
             field.set({
-                width: Math.round(width / ($field.cell + $field.gap)),
-                height: Math.round(height / ($field.cell + $field.gap)),
+                width: Math.round(width / cell),
+                height: Math.round(height / cell),
                 part: $field.part,
                 cell: $field.cell,
                 gap: $field.gap,
@@ -34,7 +35,7 @@
             if (!$isPlaying) return;
             const { dataset } = e.target;
             if (Object.keys(dataset).length) {
-                const axis = snake.direction.x === 0 ? "x" : "y";
+                const axis = !snake.direction.x ? "x" : "y";
                 const back = Number(dataset[axis]) < snake.head[axis];
                 const vert = back ? "Up" : "Down";
                 const horz = back ? "Left" : "Right";
