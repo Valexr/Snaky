@@ -7,7 +7,7 @@
     let sizes = [
         ["full", 1],
         ["half", 1.5],
-        ["quart", 2.5],
+        ["quart", 2],
     ];
 
     function snakeLength(e: any) {
