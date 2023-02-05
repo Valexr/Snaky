@@ -31,6 +31,7 @@ const buildOptions = {
     entryPoints: ['src/app.ts'],
     outdir: 'public/build',
     format: 'esm',
+    loader: { '.svg': 'file' },
     plugins: [svelte(svelteOptions), log],
     inject: DEV ? ['./env/lr.js'] : [],
     legalComments: "none",
