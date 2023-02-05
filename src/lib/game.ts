@@ -9,7 +9,7 @@ export const field = writable<Size>({
     height: 20,
     part: 1.5,
     gap: 1.5,
-    cell: 16
+    cell: 15
 });
 
 export const isPlaying = writable<boolean>(false);
