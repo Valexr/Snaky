@@ -40,11 +40,9 @@ select {
 
 #start {
     position: relative;
-    left: calc(50% - 150px);
-    top: calc(50% - 25px);
     cursor: pointer;
     height: 50px;
-    width: 300px;
+    width: 100%;
     border: none;
     font-size: 2rem;
     font-family: inherit;
