@@ -14,11 +14,12 @@
 }
 
 #gh {
-    background-image: url('../svg/gh.svg');
     text-decoration: none;
     display: inline-block;
     width: 24px;
     height: 24px;
     bottom: 2px;
     position: relative;
+    color: var(--dark);
+    display: flex;
 }

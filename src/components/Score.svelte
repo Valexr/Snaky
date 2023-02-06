@@ -1,5 +1,10 @@
 <script lang="ts" context="module">
     import { score, speed } from "$lib/game";
+    import gh from "../svg/gh.svg";
+
+    let doc = new DOMParser().parseFromString(gh, "application/xml");
+    let node = document.importNode(doc.documentElement, true);
+    console.log(node);
 </script>
 
 <header id="scoreboard">
@@ -9,7 +14,7 @@
             href="https://github.com/Valexr/Snaky"
             target="_blank"
             rel="noreferrer"
-            id="gh">&nbsp;</a
+            id="gh">{@html gh}</a
         >
         Snaky
     </h1>
