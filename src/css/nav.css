@@ -33,6 +33,7 @@ label {
 input,
 select {
     border: 0;
+    border-radius: 0;
     padding: 0.25rem;
     color: var(--primary);
     background-color: var(--dark);
@@ -45,7 +46,6 @@ select {
     background-repeat: no-repeat;
     background-size: .5em .75em;
     padding-right: 2em;
-    border-radius: 0;
 }
 
 button {
