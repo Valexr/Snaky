@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+    import { apple } from "$lib/apple";
     import { equal } from "$lib/utils";
     import type { Cell } from "$types";
 </script>
@@ -13,4 +14,5 @@
     data-y={pixel.y}
     class="pixel"
     class:fill={filled.some((field) => equal(field, pixel))}
+    class:apple={equal(pixel, $apple)}
 />

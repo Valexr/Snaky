@@ -23,15 +23,18 @@
             });
         });
 
-        area.isConnected && RO.observe(area);
+        RO.observe(area);
 
-        const keyboardHandler = (e: KeyboardEvent) => {
+        window.onkeydown = (e) => keyboardHandler(e);
+        area.onclick = (e) => clickHandler(e as ClickEvent);
+
+        function keyboardHandler(e: KeyboardEvent) {
             if (e.key.includes("Arrow")) {
                 const side = e.key.replace("Arrow", "");
                 snake.direct(side);
             }
-        };
-        const clickHandler = (e: ClickEvent) => {
+        }
+        function clickHandler(e: ClickEvent) {
             if ($state === "stop" || $state === "pause") return;
             const { dataset } = e.target;
             if (Object.keys(dataset).length) {
@@ -43,10 +46,7 @@
 
                 snake.direct(side);
             }
-        };
-
-        window.onkeydown = (e) => keyboardHandler(e);
-        area.onclick = (e) => clickHandler(e as ClickEvent);
+        }
 
         return {
             destroy() {

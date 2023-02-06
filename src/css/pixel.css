@@ -10,3 +10,7 @@
     background-color: var(--dark);
     box-shadow: var(--shadow);
 }
+
+.apple {
+    box-shadow: none;
+}

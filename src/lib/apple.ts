@@ -1,8 +1,8 @@
 import { get, writable } from 'svelte/store';
 import { field } from './game';
 import { snake } from './snake';
-import type { Cell } from '$types';
 import { equal } from './utils';
+import type { Cell } from '$types';
 
 function createApple() {
     const { subscribe, set } = writable<Cell>({ x: 0, y: 0 })
