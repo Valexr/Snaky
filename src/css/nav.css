@@ -37,6 +37,7 @@ select {
     padding: 0.25rem;
     color: var(--primary);
     background-color: var(--dark);
+    font-size: inherit;
 }
 
 select {
