@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { score, speed, stop, isPlaying } from "$lib/game";
+    import { score, speed } from "$lib/game";
 </script>
 
 <header id="scoreboard">
@@ -11,11 +11,7 @@
             rel="noreferrer"
             id="gh">&nbsp;</a
         >
-        {#if $isPlaying}
-            <button id="stop" on:click={stop}>Stop</button>
-        {:else}
-            Snaky
-        {/if}
+        Snaky
     </h1>
     <h3>Speed: {$speed}</h3>
 </header>

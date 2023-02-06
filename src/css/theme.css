@@ -6,7 +6,7 @@
     --shadow-lg: 4px 4px 1px 0px hwb(75 15% 75% / 0.5);
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     :root {
         color-scheme: dark;
         --dark: hwb(75 35% 20%);
@@ -15,4 +15,4 @@
         --shadow: 2px 2px 1px 0px hwb(75 15% 75% / 0.25);
         --shadow-lg: 4px 4px 1px 0px hwb(75 15% 75% / 0.25);
     }
-} */
+}

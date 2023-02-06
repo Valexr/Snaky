@@ -12,3 +12,8 @@
     pointer-events: auto;
     --webkit-user-select: none;
 }
+
+#field.full {
+    inset: 3rem 1rem;
+    height: calc(100% / var(--part) - 6rem);
+}

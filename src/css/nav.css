@@ -8,6 +8,16 @@ nav {
     width: 300px;
 }
 
+nav.playing {
+    top: auto;
+    left: auto;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 1rem;
+    bottom: 0.5rem;
+    width: 100%;
+}
+
 fieldset {
     display: flex;
     justify-content: space-between;
@@ -30,7 +40,7 @@ select {
 
 select {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23a8c64e'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='currentColor'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E");
     background-position: right 0.5em center;
     background-repeat: no-repeat;
     background-size: .5em .75em;
@@ -38,21 +48,26 @@ select {
     border-radius: 0;
 }
 
-#start {
-    position: relative;
+button {
+    border: 0;
     cursor: pointer;
-    height: 50px;
-    width: 100%;
-    border: none;
-    font-size: 2rem;
-    font-family: inherit;
-    color: var(--primary);
+    position: relative;
+    vertical-align: middle;
+    box-shadow: var(--shadow);
     background-color: var(--dark);
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 1.25rem;
+    padding: 0.25rem 1rem;
+}
+
+button.lg {
+    font-size: 2rem;
     box-shadow: var(--shadow-lg);
 }
 
-#start:active {
-    top: 4px;
-    left: 4px;
+button:active {
+    top: 2px;
+    left: 2px;
     box-shadow: none;
 }

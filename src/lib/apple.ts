@@ -10,13 +10,13 @@ function createApple() {
     return {
         subscribe,
         make() {
-            let pixel: Cell;
-            do pixel = field.random();
-            while (snake.include(pixel))
-            set(pixel);
+            let cell: Cell;
+            do cell = field.random();
+            while (snake.include(cell))
+            set(cell);
         },
-        include(pixel: Cell) {
-            return equal(get(this), pixel)
+        include(cell: Cell) {
+            return equal(get(this), cell)
         }
     }
 };

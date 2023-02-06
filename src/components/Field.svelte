@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { field, isPlaying } from "$lib/game";
+    import { field, playing } from "$lib/game";
     import { snake } from "$lib/snake";
     import { apple } from "$lib/apple";
     import Pixel from "$components/Pixel.svelte";
@@ -27,21 +27,21 @@
 
         const keyboardHandler = (e: KeyboardEvent) => {
             if (e.key.includes("Arrow")) {
-                const direction = e.key.replace("Arrow", "");
-                snake.setDirection(direction);
+                const side = e.key.replace("Arrow", "");
+                snake.direct(side);
             }
         };
         const clickHandler = (e: ClickEvent) => {
-            if (!$isPlaying) return;
+            if (!$playing) return;
             const { dataset } = e.target;
             if (Object.keys(dataset).length) {
                 const axis = !snake.direction.x ? "x" : "y";
                 const back = Number(dataset[axis]) < snake.head[axis];
                 const vert = back ? "Up" : "Down";
                 const horz = back ? "Left" : "Right";
-                const direction = axis === "x" ? horz : vert;
+                const side = axis === "x" ? horz : vert;
 
-                snake.setDirection(direction);
+                snake.direct(side);
             }
         };
 
@@ -58,6 +58,7 @@
 
 <section
     id="field"
+    class:full={$field.part === 1}
     use:controls
     style="
         --cols: {$field.width}; 

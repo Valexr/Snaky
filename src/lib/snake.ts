@@ -15,13 +15,13 @@ function createSnake() {
 
     let head: Cell = { x: 0, y: 0 }
     let direction: Cell = { x: 1, y: 0 }
-    let makeLonger: boolean = false
+    let expand: boolean = false
 
     return {
         set,
         subscribe,
         update,
-        head, direction, makeLonger,
+        head, direction, expand,
         init() {
             score.set(0);
             this.head = get(this)[0];
@@ -35,20 +35,20 @@ function createSnake() {
         },
         moveBody() {
             this.unshift(this.head);
-            if (this.makeLonger) {
-                this.makeLonger = false;
+            if (this.expand) {
+                this.expand = false;
             } else {
                 this.pop();
             }
         },
-        include(pixel: Cell) {
-            return get(this).some((field) => equal(field, pixel));
+        direct(side: string) {
+            this.direction = directions[side];
         },
-        setDirection(dir: string) {
-            this.direction = directions[dir];
+        include(cell: Cell) {
+            return get(this).some((field) => equal(field, cell));
         },
-        unshift(pixel: Cell) {
-            set([pixel, ...get(this)])
+        unshift(cell: Cell) {
+            set([cell, ...get(this)])
         },
         pop() {
             set(get(this).slice(0, -1))

@@ -23,25 +23,25 @@ function createField() {
 }
 export const field = createField()
 
-export const isPlaying = writable<boolean>(false);
+export const playing = writable<boolean>(false);
 export const score = writable<number>(0);
 export const speed = writable<number>(1);
 
 export function start() {
-    isPlaying.set(true);
+    playing.set(true);
     snake.init();
     apple.make();
     tick();
 }
 
 export function stop() {
-    isPlaying.set(false);
+    playing.set(false);
     snake.set([{ x: 0, y: 0 }])
 }
 
 function tick() {
     setTimeout(() => {
-        if (get(isPlaying)) {
+        if (get(playing)) {
             move();
             tick();
         }
@@ -67,7 +67,7 @@ function move() {
 
     if (apple.include(snake.head)) {
         apple.make();
-        snake.makeLonger = true;
+        snake.expand = true;
         score.update(score => score += 10 * get(speed));
         if (!(get(snake).length % 5)) {
             speed.update(speed => clamp(1, speed + 1, 10))
