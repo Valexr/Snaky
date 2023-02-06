@@ -23,25 +23,32 @@ function createField() {
 }
 export const field = createField()
 
-export const playing = writable<boolean>(false);
+export const state = writable<string>();
 export const score = writable<number>(0);
 export const speed = writable<number>(1);
 
 export function start() {
-    playing.set(true);
+    state.set('play');
     snake.init();
     apple.make();
     tick();
 }
 
 export function stop() {
-    playing.set(false);
+    state.set('stop');
     snake.set([{ x: 0, y: 0 }])
+}
+export function pause() {
+    state.set('pause');
+}
+export function resume() {
+    state.set('play');
+    tick();
 }
 
 function tick() {
     setTimeout(() => {
-        if (get(playing)) {
+        if (get(state) === 'play') {
             move();
             tick();
         }
