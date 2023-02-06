@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 :root {
     --primary: hwb(75 35% 15%);
     --secondary: hwb(75 15% 35% / 0.25);

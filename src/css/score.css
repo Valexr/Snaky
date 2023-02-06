@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 1rem;
+    font-size: small;
 }
 
 #scoreboard>* {
@@ -18,7 +19,6 @@
     display: inline-block;
     width: 24px;
     height: 24px;
-    bottom: 2px;
     position: relative;
     color: var(--dark);
     display: flex;
