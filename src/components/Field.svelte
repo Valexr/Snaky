@@ -29,6 +29,7 @@
         area.onclick = (e) => clickHandler(e as ClickEvent);
 
         function keyboardHandler(e: KeyboardEvent) {
+            if ($game.state !== "play") return;
             if (e.key.includes("Arrow")) {
                 const side = e.key.replace("Arrow", "");
                 snake.direct(side);
@@ -38,7 +39,7 @@
             }
         }
         function clickHandler(e: ClickEvent) {
-            if ($game.state === "stop" || $game.state === "pause") return;
+            if ($game.state !== "play") return;
             const { dataset } = e.target;
             if (Object.keys(dataset).length) {
                 const axis = !snake.direction.x ? "x" : "y";

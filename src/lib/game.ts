@@ -38,8 +38,7 @@ function createGame() {
     }
     return {
         subscribe,
-        update,
-        set,
+        state, score,
         start() {
             score(0)
             state('play');
@@ -63,10 +62,7 @@ function createGame() {
         },
         speedup() {
             update(game => Object.assign(game, { speed: clamp(1, game.speed + 1, 10) }))
-        },
-        tickup() {
-            return 450 - (40 * (get(this).speed))
-        },
+        }
     }
 }
 
@@ -78,13 +74,14 @@ function tick() {
             move();
             tick();
         }
-    }, game.tickup());
+    }, 500 / get(game).speed);
 }
 
 function move() {
+
     snake.moveHead();
 
-    if (snake.include(snake.head)) return stop();
+    if (snake.include(snake.head)) return game.stop();
 
     if (snake.head.y < 0) {
         snake.head.y = get(field).height - 1
