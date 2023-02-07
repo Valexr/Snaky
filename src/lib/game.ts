@@ -74,7 +74,7 @@ function tick() {
             move();
             tick();
         }
-    }, 500 / get(game).speed);
+    }, 450 - (40 * get(game).speed));
 }
 
 function move() {
