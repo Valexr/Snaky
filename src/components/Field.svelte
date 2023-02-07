@@ -29,7 +29,6 @@
         area.onclick = (e) => clickHandler(e as ClickEvent);
 
         function keyboardHandler(e: KeyboardEvent) {
-            console.log(e.key);
             if (e.key.includes("Arrow")) {
                 const side = e.key.replace("Arrow", "");
                 snake.direct(side);
