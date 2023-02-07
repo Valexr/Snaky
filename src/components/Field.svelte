@@ -33,6 +33,7 @@
                 const side = e.key.replace("Arrow", "");
                 snake.direct(side);
             } else if (e.key.includes("Escape")) {
+                e.preventDefault();
                 game.pause();
             }
         }
