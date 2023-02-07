@@ -29,9 +29,12 @@
         area.onclick = (e) => clickHandler(e as ClickEvent);
 
         function keyboardHandler(e: KeyboardEvent) {
+            console.log(e.key);
             if (e.key.includes("Arrow")) {
                 const side = e.key.replace("Arrow", "");
                 snake.direct(side);
+            } else if (e.key.includes("Escape")) {
+                game.pause();
             }
         }
         function clickHandler(e: ClickEvent) {

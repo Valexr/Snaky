@@ -65,7 +65,7 @@ function createGame() {
             update(game => Object.assign(game, { speed: clamp(1, game.speed + 1, 10) }))
         },
         tickup() {
-            return 450 - (50 * (get(this).speed))
+            return 450 - (40 * (get(this).speed))
         },
     }
 }
