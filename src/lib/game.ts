@@ -2,7 +2,7 @@ import { get, writable } from 'svelte/store';
 import { snake } from './snake';
 import { apple } from './apple';
 import { clamp, random } from './utils';
-import type { Field } from '$types';
+import type { Field, Game } from '$types';
 
 function createField() {
     const { subscribe, set } = writable<Field>()
@@ -23,36 +23,62 @@ function createField() {
 }
 export const field = createField()
 
-export const state = writable<string>();
-export const score = writable<number>(0);
-export const speed = writable<number>(1);
-
-export function start() {
-    state.set('play');
-    snake.init();
-    apple.make();
-    tick();
+function createGame() {
+    const { subscribe, set, update } = writable<Game>()
+    set({
+        state: '',
+        score: 0,
+        speed: 1
+    })
+    function state(state: Game["state"]) {
+        update(game => Object.assign(game, { state }))
+    }
+    function score(score: number) {
+        update(game => Object.assign(game, { score }))
+    }
+    return {
+        subscribe,
+        update,
+        set,
+        start() {
+            score(0)
+            state('play');
+            snake.init();
+            apple.make();
+            tick();
+        },
+        pause() {
+            state('pause');
+        },
+        resume() {
+            state('play');
+            tick();
+        },
+        stop() {
+            state('stop');
+            snake.set([{ x: 0, y: 0 }])
+        },
+        scoreup() {
+            update(game => Object.assign(game, { score: game.score + 10 * game.speed }))
+        },
+        speedup() {
+            update(game => Object.assign(game, { speed: clamp(1, game.speed + 1, 10) }))
+        },
+        tickup() {
+            return 450 - (50 * (get(this).speed))
+        },
+    }
 }
 
-export function stop() {
-    state.set('stop');
-    snake.set([{ x: 0, y: 0 }])
-}
-export function pause() {
-    state.set('pause');
-}
-export function resume() {
-    state.set('play');
-    tick();
-}
+export const game = createGame()
 
 function tick() {
     setTimeout(() => {
-        if (get(state) === 'play') {
+        if (get(game).state === 'play') {
             move();
             tick();
         }
-    }, 500 - (50 * (get(speed) - 1)));
+    }, game.tickup());
 }
 
 function move() {
@@ -75,9 +101,9 @@ function move() {
     if (apple.include(snake.head)) {
         apple.make();
         snake.expand = true;
-        score.update(score => score += 10 * get(speed));
+        game.scoreup();
         if (!(get(snake).length % 5)) {
-            speed.update(speed => clamp(1, speed + 1, 10))
+            game.speedup()
         }
     }
 }

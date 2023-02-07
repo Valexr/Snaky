@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { field, state } from "$lib/game";
+    import { field, game } from "$lib/game";
     import { snake } from "$lib/snake";
     import { apple } from "$lib/apple";
     import Pixel from "$components/Pixel.svelte";
@@ -35,7 +35,7 @@
             }
         }
         function clickHandler(e: ClickEvent) {
-            if ($state === "stop" || $state === "pause") return;
+            if ($game.state === "stop" || $game.state === "pause") return;
             const { dataset } = e.target;
             if (Object.keys(dataset).length) {
                 const axis = !snake.direction.x ? "x" : "y";

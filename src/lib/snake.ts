@@ -1,5 +1,4 @@
 import { get, writable } from 'svelte/store';
-import { score } from '$lib/game';
 import { equal } from './utils';
 import type { Cell } from '$types';
 
@@ -23,7 +22,6 @@ function createSnake() {
         update,
         head, direction, expand,
         init() {
-            score.set(0);
             this.head = get(this)[0];
             this.direction = directions.Right;
         },

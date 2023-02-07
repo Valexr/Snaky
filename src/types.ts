@@ -1,3 +1,9 @@
+export type Game = {
+    state: 'play' | 'pause' | 'stop' | '',
+    score: number,
+    speed: number
+}
+
 export type Field = {
     width: number,
     height: number,

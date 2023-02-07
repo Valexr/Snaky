@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { start, stop, speed, field, state, pause, resume } from "$lib/game";
+    import { game, field } from "$lib/game";
     import { snake } from "$lib/snake";
 </script>
 
@@ -19,21 +19,24 @@
     }
 </script>
 
-<nav class:playing={$state === "play"}>
-    {#if $state === "play"}
-        <button on:click={pause}>Pause</button>
-        <button on:click={stop}>Stop</button>
+<nav class:playing={$game.state === "play"}>
+    {#if $game.state === "play"}
+        <button on:click={game.pause}>Pause</button>
+        <button on:click={game.stop}>Stop</button>
     {:else}
-        <button class="lg" on:click={$state === "pause" ? resume : start}>
-            {$state === "pause" ? "Resume" : "Start"}
+        <button
+            class="lg"
+            on:click={$game.state === "pause" ? game.resume : game.start}
+        >
+            {$game.state === "pause" ? "Resume" : "Start"}
         </button>
-        {#if $state !== "pause"}
+        {#if $game.state !== "pause"}
             <fieldset>
                 <label>
                     Speed
                     <input
                         type="number"
-                        bind:value={$speed}
+                        bind:value={$game.speed}
                         min="1"
                         max="10"
                         maxlength="2"
