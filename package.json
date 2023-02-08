@@ -9,7 +9,6 @@
         "dev": "node esbuild --dev",
         "surge": "npm run build && npx surge public"
     },
-    "license": "MIT",
     "devDependencies": {
         "@tsconfig/svelte": "^3.0.0",
         "esbuild": "^0.17.6",
