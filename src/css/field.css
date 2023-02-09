@@ -9,8 +9,9 @@
     margin: auto;
     position: absolute;
     user-select: none;
-    pointer-events: auto;
-    --webkit-user-select: none;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 #field.full {

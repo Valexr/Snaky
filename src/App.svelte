@@ -4,11 +4,13 @@
     import Nav from "$components/Nav.svelte";
 </script>
 
+<Score />
 <main>
-    <Score />
     <Field />
-    <Nav />
 </main>
+<footer>
+    <Nav />
+</footer>
 
 <style>
     @import "app.css";
