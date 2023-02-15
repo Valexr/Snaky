@@ -1,8 +1,8 @@
 body {
     color: var(--dark);
     background-color: var(--primary);
-    font-family: "Courier New", Courier, monospace;
-    font-family: 'Silkscreen', cursive;
+    /* font-family: "Courier New", Courier, monospace; */
+    font-family: 'Silkscreen', system-ui;
     font-size: 14px;
     letter-spacing: -2px;
     margin: 0;

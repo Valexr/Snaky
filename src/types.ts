@@ -1,3 +1,10 @@
+export type Name = string
+
+export type Repository = {
+    type: string
+    url: string
+}
+
 export type Game = {
     state: 'play' | 'pause' | 'stop' | '',
     score: number,
