@@ -1,12 +1,16 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { game } from "$lib/game";
     import gh from "../svg/gh.svg";
     import type { Name, Repository } from "$types";
+
+    interface Props {
+        name: Name;
+        repository: Repository;
+    }
 </script>
 
 <script lang="ts">
-    export let name: Name;
-    export let repository: Repository;
+    let { name, repository }: Props = $props();
 </script>
 
 <header id="scoreboard">

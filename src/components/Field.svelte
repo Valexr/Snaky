@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { field, game } from "$lib/game";
     import { snake } from "$lib/snake";
     import { apple } from "$lib/apple";

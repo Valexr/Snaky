@@ -1,10 +1,10 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { game, field } from "$lib/game";
     import { snake } from "$lib/snake";
 </script>
 
 <script lang="ts">
-    let sizes = [
+    const sizes = [
         ["full", 1],
         ["half", 1.5],
         ["quart", 2],
@@ -21,12 +21,12 @@
 
 <nav class:playing={$game.state === "play"}>
     {#if $game.state === "play"}
-        <button on:click={game.pause}>Pause</button>
-        <button on:click={game.stop}>Stop</button>
+        <button onclick={game.pause}>Pause</button>
+        <button onclick={game.stop}>Stop</button>
     {:else}
         <button
             class="lg"
-            on:click={$game.state === "pause" ? game.resume : game.start}
+            onclick={$game.state === "pause" ? game.resume : game.start}
         >
             {$game.state === "pause" ? "Resume" : "Start"}
         </button>
@@ -48,7 +48,7 @@
                     <input
                         type="number"
                         value={$snake.length}
-                        on:input={snakeLength}
+                        oninput={snakeLength}
                         min="1"
                         max="10"
                         maxlength="2"

@@ -1,13 +1,17 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import Score from "$components/Score.svelte";
     import Field from "$components/Field.svelte";
     import Nav from "$components/Nav.svelte";
     import type { Name, Repository } from "$types";
+
+    interface Props {
+        name: Name;
+        repository: Repository;
+    }
 </script>
 
 <script lang="ts">
-    export let name: Name;
-    export let repository: Repository;
+    let { name, repository }: Props = $props();
 </script>
 
 <svelte:head>
