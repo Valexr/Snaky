@@ -2,4 +2,4 @@
 /public/build/
 
 .DS_Store
-*lock.*
+bun.lock

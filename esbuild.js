@@ -7,7 +7,7 @@ import log from './env/log.js';
 const DEV = process.argv.includes('--dev');
 
 const serveOptions = {
-    servedir: 'public'
+    servedir: 'public',
 };
 
 const svelteOptions = {
@@ -17,7 +17,7 @@ const svelteOptions = {
             sourceMap: DEV,
             typescript: true,
         }),
-    ]
+    ],
 };
 
 const buildOptions = {
@@ -30,8 +30,8 @@ const buildOptions = {
     loader: { '.svg': 'text' },
     plugins: [svelte(svelteOptions), log],
     inject: DEV ? ['./env/lr.js'] : [],
-    legalComments: "none",
-    logLevel: 'info'
+    legalComments: 'none',
+    logLevel: 'info',
 };
 
 await rm('public/build');
@@ -43,7 +43,7 @@ if (DEV) {
     await ctx.serve(serveOptions);
 
     process.on('SIGTERM', ctx.dispose);
-    process.on("exit", ctx.dispose);
+    process.on('exit', ctx.dispose);
 } else {
     await build(buildOptions);
 }
