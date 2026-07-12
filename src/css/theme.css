@@ -1,29 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
 
 :root {
-    --primary: hwb(75 35% 15%);
-    --secondary: hwb(75 15% 35% / 0.25);
-    --dark: hwb(75 15% 75%);
-    --shadow: 2px 2px 1px 0px hwb(75 15% 75% / 0.5);
-    --shadow-lg: 4px 4px 1px 0px hwb(75 15% 75% / 0.5);
+	--primary: hwb(75 35% 15%);
+	--secondary: hwb(75 15% 35% / 0.25);
+	--dark: hwb(75 15% 75%);
+	--shadow: 2px 2px 1px 0px hwb(75 15% 75% / 0.5);
+	--shadow-lg: 4px 4px 1px 0px hwb(75 15% 75% / 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        color-scheme: dark;
-        --dark: hwb(75 35% 15%);
-        --secondary: hwb(75 15% 35% / 0.15);
-        --primary: hwb(75 15% 85%);
-        --shadow: 2px 2px 1px 0px hwb(75 15% 35% / 0.5);
-        --shadow-lg: 4px 4px 1px 0px hwb(75 15% 35% / 0.5);
-    }
+	:root {
+		color-scheme: dark;
+		--dark: hwb(75 35% 15%);
+		--secondary: hwb(75 15% 35% / 0.15);
+		--primary: hwb(75 15% 85%);
+		--shadow: 2px 2px 1px 0px hwb(75 15% 35% / 0.5);
+		--shadow-lg: 4px 4px 1px 0px hwb(75 15% 35% / 0.5);
+	}
 }
 
 :root[color-scheme="dark"] {
-    color-scheme: dark;
-    --dark: hwb(75 35% 15%);
-    --secondary: hwb(75 15% 35% / 0.15);
-    --primary: hwb(75 15% 85%);
-    --shadow: 2px 2px 1px 0px hwb(75 15% 35% / 0.5);
-    --shadow-lg: 4px 4px 1px 0px hwb(75 15% 35% / 0.5);
+	color-scheme: dark;
+	--dark: hwb(75 35% 15%);
+	--secondary: hwb(75 15% 35% / 0.15);
+	--primary: hwb(75 15% 85%);
+	--shadow: 2px 2px 1px 0px hwb(75 15% 35% / 0.5);
+	--shadow-lg: 4px 4px 1px 0px hwb(75 15% 35% / 0.5);
 }

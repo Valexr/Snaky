@@ -1,6 +1,6 @@
 <script lang="ts" module>
-    import { game, field } from "$lib/game";
-    import { snake } from "$lib/snake";
+import { game, field } from '$lib/game';
+import { snake } from '$lib/snake';
 </script>
 
 <script lang="ts">

@@ -1,22 +1,24 @@
 {
-    "name": "snaky",
-    "description": "Snake game",
-    "version": "1.0.0",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "build": "node esbuild",
-        "dev": "node esbuild --dev"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Valexr/snaky"
-    },
-    "devDependencies": {
-        "esbuild": "^0.28.0",
-        "esbuild-svelte": "^0.9.5",
-        "svelte": "^5.55.5",
-        "svelte-preprocess": "^6.0.3",
-        "typescript": "^6.0.3"
-    }
+  "name": "snaky",
+  "description": "Snake game",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild",
+    "dev": "node esbuild --dev",
+    "lint": "biome check --fix",
+    "preview": "npx esbuild --servedir=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Valexr/snaky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.3",
+    "esbuild": "^0.28.1",
+    "esbuild-svelte": "^0.9.5",
+    "svelte": "^5.56.4",
+    "typescript": "^7.0.2"
+  }
 }

@@ -1,20 +1,20 @@
 #field {
-    display: grid;
-    grid-template-columns: repeat(var(--cols), var(--cell));
-    grid-auto-rows: minmax(var(--cell), auto);
-    gap: var(--gap);
-    inset: 3rem 1rem 1rem;
-    width: calc(100% / var(--part) - 2rem);
-    height: calc(100% / var(--part) - 4rem);
-    margin: auto;
-    position: absolute;
-    user-select: none;
+	display: grid;
+	grid-template-columns: repeat(var(--cols), var(--cell));
+	grid-auto-rows: minmax(var(--cell), auto);
+	gap: var(--gap);
+	inset: 3rem 1rem 1rem;
+	width: calc(100% / var(--part) - 2rem);
+	height: calc(100% / var(--part) - 4rem);
+	margin: auto;
+	position: absolute;
+	user-select: none;
 
-    -moz-user-select: none;
-    -webkit-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 }
 
 #field.full {
-    inset: 3rem 1rem;
-    height: calc(100% / var(--part) - 6rem);
+	inset: 3rem 1rem;
+	height: calc(100% / var(--part) - 6rem);
 }

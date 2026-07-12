@@ -1,25 +1,24 @@
 #scoreboard {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0.5rem 1rem;
-    font-size: small;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 0.5rem 1rem;
+	font-size: small;
 }
 
-#scoreboard>* {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+#scoreboard > * {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 #gh {
-    text-decoration: none;
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    position: relative;
-    color: var(--dark);
-    display: flex;
+	text-decoration: none;
+	width: 24px;
+	height: 24px;
+	position: relative;
+	color: var(--dark);
+	display: flex;
 }

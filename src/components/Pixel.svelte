@@ -1,7 +1,7 @@
 <script lang="ts" module>
-    import { apple } from "$lib/apple";
-    import { equal } from "$lib/utils";
-    import type { Cell } from "$types";
+import { apple } from '$lib/apple';
+import { equal } from '$lib/utils';
+import type { Cell } from '$types';
 </script>
 
 <script lang="ts">

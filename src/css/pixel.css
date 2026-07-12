@@ -1,16 +1,16 @@
 .pixel {
-    background-color: var(--secondary);
+	background-color: var(--secondary);
 }
 
 .pixel:active {
-    box-shadow: var(--shadow);
+	box-shadow: var(--shadow);
 }
 
 .fill {
-    background-color: var(--dark);
-    box-shadow: var(--shadow);
+	background-color: var(--dark);
+	box-shadow: var(--shadow);
 }
 
 .apple {
-    box-shadow: none;
+	box-shadow: none;
 }

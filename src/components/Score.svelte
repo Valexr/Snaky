@@ -1,12 +1,12 @@
 <script lang="ts" module>
-    import { game } from "$lib/game";
-    import gh from "../svg/gh.svg";
-    import type { Name, Repository } from "$types";
+import { game } from '$lib/game';
+import gh from '../svg/gh.svg';
+import type { Name, Repository } from '$types';
 
-    interface Props {
-        name: Name;
-        repository: Repository;
-    }
+interface Props {
+	name: Name;
+	repository: Repository;
+}
 </script>
 
 <script lang="ts">

@@ -1,13 +1,13 @@
 body {
-    color: var(--dark);
-    background-color: var(--primary);
-    font-family: 'Silkscreen', system-ui;
-    font-size: 14px;
-    letter-spacing: -2px;
-    margin: 0;
+	color: var(--dark);
+	background-color: var(--primary);
+	font-family: "Silkscreen", system-ui;
+	font-size: 14px;
+	letter-spacing: -2px;
+	margin: 0;
 }
 
 * {
-    box-sizing: border-box;
-    font-weight: normal;
+	box-sizing: border-box;
+	font-weight: normal;
 }
